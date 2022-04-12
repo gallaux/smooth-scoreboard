@@ -1,0 +1,66 @@
+.App {
+    text-align: center;
+}
+
+.App-logo {
+    height: 40vmin;
+    pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+        animation: App-logo-spin infinite 20s linear;
+    }
+}
+
+.App-header {
+    background-color: #1f1f23;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+.App-link {
+    color: #61dafb;
+}
+
+.horizontal-three-panels {
+    /*    width: 100%;
+    position: relative;
+    overflow: hidden;
+    flex-wrap: wrap;*/
+    /*    min-width: 100vh;
+    display: flex;*/
+    /* z-index: 1;
+    top: 0;
+    overflow-y: hidden;
+    padding-top: 20px;*/
+}
+
+.panel {
+    border: solid #1f1f23;
+    border-left-width: 1vh;
+    border-right-width: 1vh;
+    border-top-width: 1vh;
+}
+
+.panel-player {
+    height: 34vh;
+    background-color: #282c34;
+}
+
+.panel-control {
+    float: left;
+    height: 28vh;
+}
+
+.panel-timer {
+    cursor: pointer;
+    float: right;
+    font-size: 23vh;
+    height: 28vh;
+    margin-right: 0.1em;
+    margin-left: 0.1em;
+}
