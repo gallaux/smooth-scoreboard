@@ -7,6 +7,7 @@ import { svgStringToImageSource } from 'tunis-extensions';
 
 export type PlayerControlProps = {
     id: PlayerId;
+    name: string;
 };
 
 const PlayerControl: React.FC<PlayerControlProps> = (props) => {
@@ -15,7 +16,7 @@ const PlayerControl: React.FC<PlayerControlProps> = (props) => {
     const defaultPlayerName = `PLAYER ${props.id.toString()}`;
     const defaultPlayerCountry = props.id === 1 ? "BR" : "US";
 
-    const [name, setName] = useState(defaultPlayerName);
+    const [name, setName] = useState(props.name);
     const [countryCode, setCountryCode] = useState(defaultPlayerCountry);
     const [countrySvg, setCountrySvg] = useState("");
 
@@ -28,34 +29,36 @@ const PlayerControl: React.FC<PlayerControlProps> = (props) => {
     };
 
     useEffect(() => {
+        setName(props.name.toUpperCase());
+    }, [props.name]);
+
+    useEffect(() => {
         if (countryCode) {
             getCountryFlagSvg(countryCode).then(svg => setCountrySvg(svgStringToImageSource(svg)));
         }
     }, [countryCode]);
 
     return (
-        <>
-            <div className="panel-player-control">
-                <input
-                    id={`player${props.id.toString()}-name-input`}
-                    type="text"
-                    value={name}
-                    onChange={(e) => setName((e.target.value).toUpperCase())}
-                    onBlur={handleNameInputBlur}
-                    maxLength={20}
-                />
-                <ReactFlagsSelect
-                    id={`player${props.id.toString()}-flag-select`}
-                    className={"flags-select"}
-                    selected={countryCode}
-                    onSelect={handleCountrySelect}
-                    searchable
-                />
-                {countrySvg &&
-                    <img src={countrySvg} alt="" style={{ width: "160px", height: "112px" }} />
-                }
-            </div>
-        </>
+        <div className="panel-player-control">
+            <input
+                id={`player${props.id.toString()}-name-input`}
+                type="text"
+                value={name}
+                onChange={(e) => setName((e.target.value).toUpperCase())}
+                onBlur={handleNameInputBlur}
+                maxLength={20}
+            />
+            <ReactFlagsSelect
+                id={`player${props.id.toString()}-flag-select`}
+                className={"flags-select"}
+                selected={countryCode}
+                onSelect={handleCountrySelect}
+                searchable
+            />
+            {countrySvg &&
+                <img src={countrySvg} alt="" style={{ width: "160px", height: "112px" }} />
+            }
+        </div>
     );
 };
 

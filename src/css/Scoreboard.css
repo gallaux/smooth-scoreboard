@@ -83,3 +83,15 @@ input {
     background-color: #282c34;
     color: #fff;
 }
+
+.button {
+    background-color: #000;
+    border: none;
+    color: white;
+    padding: 2vh 2vh;
+    margin-right: 1vh;
+    margin-bottom: 1vh;
+    text-align: center;
+    display: inline-block;
+    font-size: 3vh;
+}

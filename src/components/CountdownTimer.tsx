@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { ScoreboardContext, ScoreboardContextType } from '../context/ScoreboardContext';
-import { ControlPanelMenu } from '../models/ControlPanelMenu';
 import { formatTimer } from '../utility/utility';
 
 export type CountdownTimerProps = {
@@ -12,7 +11,7 @@ const CountdownTimer: React.FC<CountdownTimerProps> = (props) => {
     const timeOverStyle: React.CSSProperties = context.countdown === 0 ? { color: "#f73d3d" } : {};
 
     return (
-        <div className="panel-timer" onClick={() => context.toggleControlPanelMenu(ControlPanelMenu.Timer)} style={timeOverStyle}>
+        <div className="panel-timer" onClick={context.toggleCountdown} style={timeOverStyle}>
             {formatTimer(context.countdown)}
         </div>
     );
