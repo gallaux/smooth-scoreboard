@@ -8,15 +8,18 @@ const useCountdownTimer = (duration: number) => {
     const [isCounting, setIsCounting] = useState(false);
 
     const addTime = (seconds: number) => {
-        let time: number = countdown + seconds;
-        if (time > maximumDuration) {
-            time = maximumDuration;
-        } else if (time < minimumDuration) {
-            time = minimumDuration;
+        setTime(countdown + seconds);
+    };
+
+    const setTime = (seconds: number) => {
+        if (seconds > maximumDuration) {
+            seconds = maximumDuration;
+        } else if (seconds < minimumDuration) {
+            seconds = minimumDuration;
         }
 
-        setCountdown(time);
-    };
+        setCountdown(seconds);
+    }
 
     const toggleCountdown = () => {
         setIsCounting(prevIsCounting => !prevIsCounting);
@@ -37,7 +40,7 @@ const useCountdownTimer = (duration: number) => {
         return () => clearInterval(interval);
     }, [countdown, duration, isCounting]);
 
-    return { countdown, addTime, isCounting, resetTimer, toggleCountdown };
+    return { countdown, addTime, isCounting, resetTimer, setTime, toggleCountdown };
 };
 
 export default useCountdownTimer;

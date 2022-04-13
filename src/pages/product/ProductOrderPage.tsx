@@ -1,7 +1,5 @@
 import React from 'react';
 import axios from "axios";
-import { GetProduct, GetProductOrderListQuery } from '../../api/Queries';
-import { Product } from '../../models/Product';
 
 import '../../css/global.css';
 
@@ -12,7 +10,7 @@ export interface PageProps {
 export interface PageState {
     isLoading: boolean; // TODO: Add overlay when loading
     orders: any[];
-    product?: Product;
+    product?: any;
 }
 
 class ProductOrderPage extends React.Component<PageProps, PageState> {
@@ -25,59 +23,59 @@ class ProductOrderPage extends React.Component<PageProps, PageState> {
         }
     }
 
-    componentDidMount() {
-        const { id } = this.props.productId;
-        if (id) {
-            this.getProductDetails(id);
-            this.getProductOrderList(id);
-        } else {
-            this.redirectToDashboard();
-        }
-    }
+    //componentDidMount() {
+    //    const { id } = this.props.productId;
+    //    if (id) {
+    //        this.getProductDetails(id);
+    //        this.getProductOrderList(id);
+    //    } else {
+    //        this.redirectToDashboard();
+    //    }
+    //}
 
     redirectToDashboard = () => {
         // Invalid URL: Redirect to dashboard/origin
         window.location.href = window.location.origin;
     }
     
-    getProductOrderList = (productId: number) => {
-        axios(GetProductOrderListQuery(productId))
-            .then(response => {
-                console.log(response)
-                if (response.status === 200 && response.data) {
-                    this.setState({
-                        orders: response.data as any[],
-                        isLoading: false
-                    }, () => {
-                        // Kind of hacky...
-                        if (this.state.orders.length === 0) {
-                            this.redirectToDashboard();
-                        }
-                    });
-                } else {
-                    this.redirectToDashboard();
-                }
-            }).catch((error) => {
-                console.log(error)
-            });
-    }
+    //getProductOrderList = (productId: number) => {
+    //    axios(GetProductOrderListQuery(productId))
+    //        .then(response => {
+    //            console.log(response)
+    //            if (response.status === 200 && response.data) {
+    //                this.setState({
+    //                    orders: response.data as any[],
+    //                    isLoading: false
+    //                }, () => {
+    //                    // Kind of hacky...
+    //                    if (this.state.orders.length === 0) {
+    //                        this.redirectToDashboard();
+    //                    }
+    //                });
+    //            } else {
+    //                this.redirectToDashboard();
+    //            }
+    //        }).catch((error) => {
+    //            console.log(error)
+    //        });
+    //}
 
-    getProductDetails = (productId: number) => {
-        axios(GetProduct(productId))
-            .then(response => {
-                if (response.status === 200 && response.data) {
-                    this.setState({
-                        product: response.data as Product
-                    }, () => {
-                        console.log(this.state)
-                    });
-                } else {
-                    this.redirectToDashboard();
-                }
-            }).catch((error) => {
-                console.log(error)
-            });
-    }
+    //getProductDetails = (productId: number) => {
+    //    axios(GetProduct(productId))
+    //        .then(response => {
+    //            if (response.status === 200 && response.data) {
+    //                this.setState({
+    //                    product: response.data as any
+    //                }, () => {
+    //                    console.log(this.state)
+    //                });
+    //            } else {
+    //                this.redirectToDashboard();
+    //            }
+    //        }).catch((error) => {
+    //            console.log(error)
+    //        });
+    //}
 
     render() {
         return (
