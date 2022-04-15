@@ -1,8 +1,9 @@
 import { createContext, useContext, useState } from "react";
 import useCountdownTimer from "../hooks/useCountdownTimer";
-import { TimerStatus } from "../models/TimerStatus";
+import { PlayerId } from "../models/Player";
+import { TimerStatus } from "../models/TimerStatus"; 
 
-const defaultMatchDuration: number = 3; //5 * 60;
+export const defaultMatchDuration: number = 5 * 60;
 
 export type ScoreboardContextType = {
     timerStatus?: TimerStatus;
