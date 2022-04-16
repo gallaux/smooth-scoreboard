@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from "react";
 import { ScoreboardContext, ScoreboardContextType } from "../../context/ScoreboardContext";
+import useConfirmationModal from "../../hooks/useConfirmationModal";
 import useCountdownTimer from "../../hooks/useCountdownTimer";
 import ActionButton from "../buttons/ActionButton";
 import TimeButton from "../buttons/TimeButton";
 import CountdownTimer from "../CountdownTimer";
-import Modal from "../modals/Modal";
 
 interface TimerPanelProps {
     duration: number;
@@ -13,22 +13,16 @@ interface TimerPanelProps {
 const TimerPanel: React.FC<TimerPanelProps> = (props) => {
     const context: ScoreboardContextType = useContext(ScoreboardContext);
     const { countdown, addTime, isCounting, resetTimer, toggleCountdown } = useCountdownTimer(props.duration);
-    const [isModalOpened, setIsModalOpened] = useState<boolean>(false);
+    const { confirmationModal, showConfirmationModal } = useConfirmationModal({
+        submitButtonOnClick: () => context.setIsMatchResetting(true),
+        submitButtonText: "RESET MATCH?"
+    });
 
     useEffect(() => {
         if (context.isMatchResetting) {
             resetTimer();
         }
     }, [context.isMatchResetting]);
-
-    const closeConfirmationModal = () => {
-        setIsModalOpened(false);
-    };
-
-    const submitConfirmationModal = () => {
-        context.setIsMatchResetting(true);
-        closeConfirmationModal();
-    };
 
     return (
         <div className="panel">
@@ -49,7 +43,7 @@ const TimerPanel: React.FC<TimerPanelProps> = (props) => {
                     {!isCounting &&
                         <ActionButton
                             text={"RESET MATCH"}
-                            onClick={() => setIsModalOpened(true)}
+                            onClick={showConfirmationModal}
                         />
                     }
                 </div>
@@ -58,20 +52,7 @@ const TimerPanel: React.FC<TimerPanelProps> = (props) => {
                 time={countdown}
                 onClick={toggleCountdown}
             />
-            <Modal
-                isOpen={isModalOpened}
-                onRequestClose={closeConfirmationModal}
-            >
-                <h1>ARE YOU SURE?</h1>
-                <ActionButton
-                    text={"RESET MATCH"}
-                    onClick={submitConfirmationModal}
-                />
-                <ActionButton
-                    text={"CANCEL"}
-                    onClick={closeConfirmationModal}
-                />
-            </Modal>
+            {confirmationModal}
         </div>
     );
 };
