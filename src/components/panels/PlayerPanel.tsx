@@ -88,8 +88,8 @@ const PlayerPanel: React.FC<PlayerPanelProps> = (props) => {
                         <ScoreButton score={4} type={ScoreType.points} onClick={() => addToScore(4, ScoreType.points)} />
                         <ScoreButton score={1} type={ScoreType.advantages} onClick={() => addToScore(1, ScoreType.advantages)} />
                         <ScoreButton score={1} type={ScoreType.penalties} onClick={() => addToScore(1, ScoreType.penalties)} />
-                    </div>
-                    <div>
+                    {/*</div>*/}
+                    {/*<div>*/}
                         <ScoreButton score={-1} type={ScoreType.points} onClick={() => addToScore(-1, ScoreType.points)} />
                         <ScoreButton score={-2} type={ScoreType.points} onClick={() => addToScore(-2, ScoreType.points)} />
                         <ScoreButton score={-3} type={ScoreType.points} onClick={() => addToScore(-3, ScoreType.points)} />

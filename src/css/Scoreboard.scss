@@ -114,3 +114,24 @@ button {
 .time-over {
     color: $color-red;
 }
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    overflow: auto;
+    border-radius: 4px;
+    padding: 25px;
+    background: $color-dark-grey;
+    color: white;
+}
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(255, 255, 255, 0.35);
+}
