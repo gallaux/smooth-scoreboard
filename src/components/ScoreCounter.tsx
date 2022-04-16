@@ -19,7 +19,7 @@ const ScoreCounter: React.FC<ScoreCounterProps> = (props) => {
                 {props.score.points}
             </div>
             <div className="panel-player-adv-pen">
-                <div>
+                <div className={props.score.advantages > 0 ? "positive" : ""}>
                     <div>ADVANTAGE</div>
                     <div
                         className="panel-player-adv-pen-score"
@@ -28,7 +28,7 @@ const ScoreCounter: React.FC<ScoreCounterProps> = (props) => {
                         {props.score.advantages}
                     </div>
                 </div>
-                <div>
+                <div className={props.score.penalties > 0 ? "negative" : ""}>
                     <div>PENALTY</div>
                     <div
                         className="panel-player-adv-pen-score"

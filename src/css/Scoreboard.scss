@@ -1,8 +1,12 @@
-$color-light-green: #ade5a9;
-$color-light-red: #b87e7c;
-$color-red: #f73d3d;
-$color-dark-grey: #1f1f23;
+$color-black: #000;
+$color-white: #fff;
 $color-grey: #282c34;
+$color-dark-grey: #1f1f23;
+$color-green: #3f803f;
+$color-light-green: #ade5a9;
+$color-red: #f73d3d;
+$color-light-red: #b87e7c;
+$color-yellow: #f5db50;
 
 .App-header {
     background-color: $color-dark-grey;
@@ -10,7 +14,7 @@ $color-grey: #282c34;
     align-items: center;
     justify-content: center;
     font-size: calc(10px + 2vmin);
-    color: white;
+    color: $color-white;
 }
 
 .panel {
@@ -63,13 +67,13 @@ $color-grey: #282c34;
 }
 
 .points-p1 {
-    background-color: #f5db50;
-    color: #3f803f;
+    background-color: $color-yellow;
+    color: $color-green;
 }
 
 .points-p2 {
-    background-color: black;
-    color: white;
+    background-color: $color-black;
+    color: $color-white;
 }
 
 .panel-player-control {
@@ -91,9 +95,9 @@ input {
 }
 
 button {
-    background-color: #000;
+    background-color: $color-black;
+    color: $color-white;
     border: none;
-    color: white;
     cursor: pointer;
     padding: 2vh 2vh;
     margin-right: 1vh;
@@ -127,7 +131,7 @@ button {
     border-radius: 4px;
     padding: 25px;
     background: $color-dark-grey;
-    color: white;
+    color: $color-white;
 }
 
 .modal-overlay {
