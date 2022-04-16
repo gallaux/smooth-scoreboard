@@ -12,6 +12,7 @@ interface TimerPanelProps {
 
 const TimerPanel: React.FC<TimerPanelProps> = (props) => {
     const context: ScoreboardContextType = useContext(ScoreboardContext);
+
     const { countdown, addTime, isCounting, resetTimer, toggleCountdown } = useCountdownTimer(props.duration);
     const { confirmationModal, showConfirmationModal } = useConfirmationModal({
         submitButtonOnClick: () => context.setIsMatchResetting(true),

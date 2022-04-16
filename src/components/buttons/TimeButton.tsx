@@ -7,6 +7,7 @@ interface TimerButtonProps extends ActionButtonProps {
 const TimerButton: React.FC<TimerButtonProps> = (props) => {
     return (
         <ActionButton
+            id={props.id}
             text={`${props.time > 0 ? "+" : ""}${props.time} SEC`}
             onClick={props.onClick}
             className={props.time > 0 ? "positive" : "negative"}

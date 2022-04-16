@@ -76,8 +76,16 @@ $color-yellow: #f5db50;
     color: $color-white;
 }
 
+.player-name-input {
+    border: none;
+}
+
 .panel-player-control {
     cursor: pointer;
+    float: left;
+}
+
+.panel-player-control div {
     float: left;
 }
 
@@ -138,4 +146,56 @@ button {
     position: fixed;
     inset: 0;
     background-color: rgba(255, 255, 255, 0.35);
+}
+
+#player-panel-grid {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 33% 33% 33%;
+}
+
+#player-panel-info-grid {
+    grid-row: 1;
+    grid-column-start: 1;
+    grid-column-end: span 2;
+
+    display: grid;
+    grid-template-rows: auto auto; /* 5 rows */
+    grid-template-columns: 150px 400px; /* 5 columns, equal width */
+}
+
+#player-flag-select {
+    grid-row: 1;
+    grid-column: 1;
+    padding: 10px
+}
+
+#player-flag {
+    grid-row: 2;
+    grid-column: 1;
+    padding: 10px
+}
+
+#player-name {
+    grid-row-start: 1;
+    grid-row-end: span 2;
+    grid-column: 2;
+    padding: 10px;
+}
+
+#player-panel-controls-grid {
+    grid-row: 2;
+    grid-column-start: 1;
+    grid-column-end: span 2;
+
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 50px 50px 50px 50px 50px 50px;
+}
+
+#player-panel-score {
+    grid-row-start: 1;
+    grid-row-end: span 2;
+    grid-column: 3;
+    padding: 10px
 }
