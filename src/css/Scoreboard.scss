@@ -1,5 +1,11 @@
+$color-light-green: #ade5a9;
+$color-light-red: #b87e7c;
+$color-red: #f73d3d;
+$color-dark-grey: #1f1f23;
+$color-grey: #282c34;
+
 .App-header {
-    background-color: #1f1f23;
+    background-color: $color-dark-grey;
     min-height: 100vh;
     align-items: center;
     justify-content: center;
@@ -8,7 +14,7 @@
 }
 
 .panel {
-    border: solid #1f1f23;
+    border: solid $color-dark-grey;
     border-left-width: 1vh;
     border-right-width: 1vh;
     border-top-width: 1vh;
@@ -16,7 +22,7 @@
 
 .panel-player {
     height: 34vh;
-    background-color: #282c34;
+    background-color: $color-grey;
 }
 
 .panel-control {
@@ -62,8 +68,8 @@
 }
 
 .points-p2 {
-    background-color: #000;
-    color: #fff;
+    background-color: black;
+    color: white;
 }
 
 .panel-player-control {
@@ -72,26 +78,39 @@
 }
 
 .flags-select ul {
-    background-color: #282c34;
+    background-color: $color-grey;
 }
 
 .flags-select div {
-    background-color: #282c34;
+    background-color: $color-grey;
 }
 
 input {
-    background-color: #282c34;
+    background-color: $color-grey;
     color: #fff;
 }
 
-.button {
+button {
     background-color: #000;
     border: none;
     color: white;
+    cursor: pointer;
     padding: 2vh 2vh;
     margin-right: 1vh;
     margin-bottom: 1vh;
     text-align: center;
     display: inline-block;
-    font-size: 3vh;
+    font-size: 1.5vh;
+}
+
+.positive {
+    color: $color-light-green;
+}
+
+.negative {
+    color: $color-light-red;
+}
+
+.time-over {
+    color: $color-red;
 }

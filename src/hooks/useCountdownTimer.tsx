@@ -17,9 +17,8 @@ const useCountdownTimer = (duration: number) => {
         } else if (seconds < minimumDuration) {
             seconds = minimumDuration;
         }
-
         setCountdown(seconds);
-    }
+    };
 
     const toggleCountdown = () => {
         setIsCounting(prevIsCounting => !prevIsCounting);
@@ -30,6 +29,10 @@ const useCountdownTimer = (duration: number) => {
     };
 
     useEffect(() => {
+        setTime(duration);
+    }, [duration]);
+
+    useEffect(() => {
         const interval = setInterval(() => {
             if (isCounting && countdown > 0) {
                 setCountdown(prevCountdown => prevCountdown - 1);
@@ -38,9 +41,9 @@ const useCountdownTimer = (duration: number) => {
             }
         }, 1000);
         return () => clearInterval(interval);
-    }, [countdown, duration, isCounting]);
+    }, [countdown, isCounting]);
 
-    return { countdown, addTime, isCounting, resetTimer, setTime, toggleCountdown };
+    return { countdown, addTime, isCounting, resetTimer, toggleCountdown };
 };
 
 export default useCountdownTimer;

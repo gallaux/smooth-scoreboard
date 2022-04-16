@@ -1,21 +1,20 @@
 export interface ActionButtonProps {
     text?: string;
-    color?: string;
+    className?: string;
     onClick?: () => void;
 };
 
 const defaultProps: ActionButtonProps = {
     text: "",
-    color: "red",
+    className: "",
     onClick: () => { }
 };
 
 const ActionButton: React.FC<ActionButtonProps> = (props) => {
     return (
         <button
-            className={"button"}
+            className={props.className}
             onClick={props.onClick}
-            style={{ backgroundColor: props.color }}
         >
             {props.text}
         </button>

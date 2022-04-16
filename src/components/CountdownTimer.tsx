@@ -1,18 +1,22 @@
-import React, { useContext } from 'react';
-import { ScoreboardContext, ScoreboardContextType } from '../context/ScoreboardContext';
-import { formatTimer } from '../utility/utility';
+import React from 'react';
+import { toStringWithZeroPadding } from 'tunis-extensions';
 
-export type CountdownTimerProps = {
-    duration: number;
+export interface CountdownTimerProps {
+    time: number;
+    onClick?: () => void;
+};
+
+const formatTimer = (time: number): string => {
+    const minutes = Math.floor(time / 60);
+    const seconds = time % 60;
+
+    return `${toStringWithZeroPadding(minutes, 2)}:${toStringWithZeroPadding(seconds, 2)}`;
 };
 
 const CountdownTimer: React.FC<CountdownTimerProps> = (props) => {
-    const context: ScoreboardContextType = useContext(ScoreboardContext);
-    const timeOverStyle: React.CSSProperties = context.countdown === 0 ? { color: "#f73d3d" } : {};
-
     return (
-        <div className="panel-timer" onClick={context.toggleCountdown} style={timeOverStyle}>
-            {formatTimer(context.countdown)}
+        <div className={`panel-timer ${props.time === 0 ? "time-over" : ""}`} onClick={props.onClick}>
+            {formatTimer(props.time)}
         </div>
     );
 };

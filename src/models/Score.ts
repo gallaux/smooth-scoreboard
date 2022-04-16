@@ -1,13 +1,19 @@
+export enum ScoreType {
+    points,
+    advantages,
+    penalties
+};
+
 export interface Score {
-    point: number;
-    advantage: number;
-    penalty: number;
+    points: number;
+    advantages: number;
+    penalties: number;
 };
 
 export const defaultScore = (): Score => {
     return {
-        point: 0,
-        advantage: 0,
-        penalty: 0
+        points: 0,
+        advantages: 0,
+        penalties: 0
     };
 };

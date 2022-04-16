@@ -1,40 +1,31 @@
-import { useContext } from 'react';
-import { ScoreboardContext, ScoreboardContextType } from '../../context/ScoreboardContext';
-import { PlayerId } from '../../models/Player';
+import { ScoreType } from '../../models/Score';
 import ActionButton, { ActionButtonProps } from './ActionButton';
 
-interface ScoreButtonProps extends ActionButtonProps, RequiredProps, OptionalProps { };
-
-interface RequiredProps {
-    playerId: PlayerId;
-    //score: number;
-    //scoreType: scoreType;
-};
-
-interface OptionalProps {
-    points: number;
-    advantages?: number;
-    penalties?: number;
-};
-
-const defaultProps: OptionalProps = {
-    points: 0,
-    advantages: 0,
-    penalties: 0
+interface ScoreButtonProps extends ActionButtonProps {
+    score: number;
+    type: ScoreType;
 };
 
 const ScoreButton: React.FC<ScoreButtonProps> = (props) => {
-    const context: ScoreboardContextType = useContext(ScoreboardContext);
+    const getText = (scoreType: ScoreType): string => {
+        let text: string = props.score > 0 ? "+" : "";
+        if (scoreType === ScoreType.points) {
+            text += props.score.toString();
+        } else {
+            text = props.score < 0 ? "-" : "";
+            text += scoreType === ScoreType.advantages ? "A" : "P";
+		}
+
+        return text;
+    };
 
     return (
         <ActionButton
-            text={(props.points >= 0 ? "+" : "-") + props.points.toString()}
-            onClick={() =>
-                context.addToPlayerScore(props.playerId, props.points, props.advantages, props.penalties)
-            }
+            text={getText(props.type)}
+            onClick={props.onClick}
+            className={props.score > 0 ? "positive" : "negative"}
         />
     );
 };
 
-ScoreButton.defaultProps = defaultProps;
 export default ScoreButton;
