@@ -150,7 +150,7 @@ button {
 
 #player-panel-grid {
     display: grid;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 70% 30%;
     grid-template-columns: 33% 33% 33%;
 }
 
@@ -167,7 +167,7 @@ button {
 #player-flag-select {
     grid-row: 1;
     grid-column: 1;
-    padding: 10px
+    padding: 10px;
 }
 
 #player-flag {
@@ -187,10 +187,10 @@ button {
     grid-row: 2;
     grid-column-start: 1;
     grid-column-end: span 2;
-
     display: grid;
     grid-template-rows: 1fr 1fr;
     grid-template-columns: 50px 50px 50px 50px 50px 50px;
+    padding: 10px;
 }
 
 #player-panel-score {
