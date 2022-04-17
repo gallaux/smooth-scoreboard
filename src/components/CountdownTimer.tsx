@@ -6,7 +6,7 @@ export interface CountdownTimerProps {
     onClick?: () => void;
 };
 
-const formatTimer = (time: number): string => {
+export const formatTimer = (time: number): string => {
     const minutes = Math.floor(time / 60);
     const seconds = time % 60;
 

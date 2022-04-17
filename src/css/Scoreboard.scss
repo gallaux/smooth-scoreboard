@@ -1,3 +1,6 @@
+/* Fonts */
+$app-font: BebasNeue;
+
 /* Colors */
 $color-black: #000;
 $color-white: #fff;
@@ -12,14 +15,16 @@ $color-yellow: #f5db50;
 
 /* Buttons */
 button {
+    font-family: $app-font;
+    font-size: 3vh;
     border: none;
     cursor: pointer;
     background-color: $color-black;
     color: $color-white;
     padding-left: 2vw;
     padding-right: 2vw;
-    padding-top: 2vh;
-    padding-bottom: 2vh;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
     margin-left: 2px;
 }
 
@@ -104,7 +109,7 @@ button.negative {
 .panel-player-grid {
     display: grid;
     grid-template-rows: 20vh 7.5vh 7.5vh;
-    grid-template-columns: 12vw auto auto auto;
+    grid-template-columns: 12vw auto auto 5vw auto;
 
     .player-country {
         grid-row: 1;
@@ -121,8 +126,8 @@ button.negative {
         justify-self: left;
 
         input {
+            font-family: $app-font;
             font-size: 15vh;
-            font-family: BebasNeue;
             background-color: $color-grey;
             color: $color-white;
             border: none;
@@ -163,12 +168,39 @@ button.negative {
         }
     }
 
-    .score-counter {
+    .score-counter-adv-pen {
+        grid-row-start: 1;
+        grid-row-end: span 3;
+        grid-column: 4;
+        justify-self: right;
+
+        .adv-pen {
+            cursor: pointer;
+            font-size: 3vh;
+            margin-top: 0.3em;
+
+            .positive {
+                color: $color-light-green
+            }
+
+            .negative {
+                color: $color-light-red
+            }
+
+            .adv-pen-score {
+                font-size: 11vh;
+            }
+        }
+    }
+
+    .score-counter-points {
+        grid-row-start: 1;
+        grid-row-end: span 3;
+        grid-column: 5;
         justify-self: right;
 
         .score-points {
-            cursor: pointer;
-            float: right;
+            grid-column: 4;
             font-size: 28vh;
             font-weight: bold;
             width: 1em;
@@ -185,31 +217,7 @@ button.negative {
             background-color: $color-black;
             color: $color-white;
         }
-
-        .adv-pen {
-            cursor: pointer;
-            float: right;
-            font-size: 3vh;
-            padding-right: 1em;
-            padding-left: 1em;
-            margin-top: 0.3em;
-
-            .adv-pen-score {
-                font-size: 11vh;
-            }
-        }
     }
-}
-
-/* Scoreboard => points */
-.score-points {
-    cursor: pointer;
-    float: right;
-    font-size: 28vh;
-    font-weight: bold;
-    width: 1em;
-    padding-right: 0.05em;
-    padding-left: 0.05em;
 }
 
 /* Modal */

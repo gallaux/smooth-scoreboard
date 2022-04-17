@@ -5,7 +5,7 @@ import { defaultMatchDuration, defaultPlayer, Player } from '../models/Player';
 import { CountryList } from '../models/Country';
 import TimerPanel from '../components/panels/TimerPanel';
 import PlayerPanel from '../components/panels/PlayerPanel';
-import '../css/ScoreboardNew.scss';
+import '../css/scoreboard.scss';
 
 const Scoreboard = () => {
     const location = useLocation();

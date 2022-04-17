@@ -29,6 +29,6 @@ module.exports = {
         }
     },
     setupFilesAfterEnv: ["<rootDir>src/setupTests.js"],
-    testMatch: ["**/__tests__/**/*.ts?(x)", "**/?(*.)+(spec|test).ts?(x)"],
+    testMatch: ["**/test/**/*.ts?(x)", "**/?(*.)+(spec|test).ts?(x)"],
     verbose: true
 };
