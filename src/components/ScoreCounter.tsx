@@ -11,18 +11,15 @@ export interface ScoreCounterProps {
 
 const ScoreCounter: React.FC<ScoreCounterProps> = (props) => {
     return (
-        <>
-            <div
-                className={props.className}
-                onClick={props.onPointsClick}
-            >
+        <div className="score-counter">
+            <div className={props.className} onClick={props.onPointsClick}>
                 {props.score.points}
             </div>
-            <div className="panel-player-adv-pen">
+            <div className="adv-pen">
                 <div className={props.score.advantages > 0 ? "positive" : ""}>
                     <div>ADVANTAGE</div>
                     <div
-                        className="panel-player-adv-pen-score"
+                        className="adv-pen-score"
                         onClick={props.onAdvantagesClick}
                     >
                         {props.score.advantages}
@@ -31,14 +28,14 @@ const ScoreCounter: React.FC<ScoreCounterProps> = (props) => {
                 <div className={props.score.penalties > 0 ? "negative" : ""}>
                     <div>PENALTY</div>
                     <div
-                        className="panel-player-adv-pen-score"
+                        className="adv-pen-score"
                         onClick={props.onPenaltiesClick}
                     >
                         {props.score.penalties}
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

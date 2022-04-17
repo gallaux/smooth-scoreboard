@@ -15,7 +15,7 @@ const formatTimer = (time: number): string => {
 
 const CountdownTimer: React.FC<CountdownTimerProps> = (props) => {
     return (
-        <div className={`panel-timer ${props.time === 0 ? "time-over" : ""}`} onClick={props.onClick}>
+        <div className={props.time === 0 ? "time-over" : ""} onClick={props.onClick}>
             {formatTimer(props.time)}
         </div>
     );

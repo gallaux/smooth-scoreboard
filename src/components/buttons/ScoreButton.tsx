@@ -21,10 +21,9 @@ const ScoreButton: React.FC<ScoreButtonProps> = (props) => {
 
     return (
         <ActionButton
-            id={props.id}
             text={getText(props.type)}
             onClick={props.onClick}
-            className={props.score > 0 ? "positive" : "negative"}
+            className={(props.score > 0 ? "positive " : "negative ") + (props.className ? props.className : "")}
         />
     );
 };

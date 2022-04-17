@@ -5,7 +5,7 @@ import { defaultMatchDuration, defaultPlayer, Player } from '../models/Player';
 import { CountryList } from '../models/Country';
 import TimerPanel from '../components/panels/TimerPanel';
 import PlayerPanel from '../components/panels/PlayerPanel';
-import '../css/Scoreboard.scss';
+import '../css/ScoreboardNew.scss';
 
 const Scoreboard = () => {
     const location = useLocation();
@@ -27,12 +27,12 @@ const Scoreboard = () => {
 
         const updatedPlayers = [...players];
         for (let i = 0; i < players.length; i++) {
-            const nameParam = queryParams.get(`name${(i+1).toString()}`);
+            const nameParam = queryParams.get(`name${(i + 1).toString()}`);
             if (nameParam) {
                 updatedPlayers[i].name = nameParam;
             }
 
-            const countryParam = queryParams.get(`country${(i+1).toString()}`)?.toUpperCase();
+            const countryParam = queryParams.get(`country${(i + 1).toString()}`)?.toUpperCase();
             if (countryParam && CountryList.has(countryParam)) {
                 updatedPlayers[i].countryCode = countryParam;
             }
@@ -42,12 +42,16 @@ const Scoreboard = () => {
     }, []);
 
     return (
-        <div className="App">
-            <header className="App-header">
+        <div className="app-grid">
+            <div className="player1-panel">
                 <PlayerPanel player={players[0]} />
+            </div>
+            <div className="player2-panel">
                 <PlayerPanel player={players[1]} />
+            </div>
+            <div className="timer-panel">
                 <TimerPanel duration={duration} />
-            </header>
+            </div>
         </div>
     );
 };
