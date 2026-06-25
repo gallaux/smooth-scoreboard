@@ -12,9 +12,3 @@ Query parameters can also be used to preset the match:
 * ?name2=Guillaume%20Allaux sets player 2's name to Guillaume Allaux (by default: Player 2)
 * ?country1=fr sets player 1's country to France (by default: Brazil)
 * ?country2=ca sets player 2's country to Canada (by default: United States of America)
-
-## Work in progress
-
-* Rework janky css
-* Test configuration and add tests
-* Release/Deploy

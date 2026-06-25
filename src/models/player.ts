@@ -5,15 +5,15 @@ export const defaultPlayerCountry = (id: PlayerId): string => id === 1 ? "BR" : 
 export type PlayerId = 1 | 2;
 
 export interface Player {
-    id: PlayerId;
-    name: string;
-    countryCode: string;
+  id: PlayerId;
+  name: string;
+  countryCode: string;
 };
 
 export const defaultPlayer = (id: PlayerId): Player => {
-    return {
-        id: id,
-        name: defaultPlayerName(id),
-        countryCode: defaultPlayerCountry(id)
-    };
+  return {
+    id: id,
+    name: defaultPlayerName(id),
+    countryCode: defaultPlayerCountry(id)
+  };
 };
